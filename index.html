@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>FindMyUni (Prototype)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>FindMyUni (Prototype)</h1>
+    <p>Answer a few quick questions and the chatbot will recommend 5 colleges using the College Scorecard data.</p>
+
+    <form id="finderForm">
+      <div class="row">
+        <label>GPA (unweighted)</label>
+        <input name="gpa" type="number" step="0.01" min="0" max="4.0" placeholder="e.g. 3.6" />
+      </div>
+
+      <div class="row">
+        <label>SAT (optional)</label>
+        <input name="sat" type="number" min="200" max="1600" placeholder="e.g. 1200" />
+      </div>
+
+      <div class="row">
+        <label>ACT (optional)</label>
+        <input name="act" type="number" min="1" max="36" />
+      </div>
+
+      <div class="row">
+        <label>FAFSA SAI (Student Aid Index) — enter number</label>
+        <input name="sai" type="number" min="-2000" max="999000" placeholder="e.g. 5000" />
+      </div>
+
+      <div class="row">
+        <label>Intended Major (optional)</label>
+        <input name="intended_major" type="text" placeholder="e.g. Computer Science" />
+      </div>
+
+      <div class="row">
+        <label>Location preference</label>
+        <select name="location_type">
+          <option value="no_pref">No preference</option>
+          <option value="urban">Urban</option>
+          <option value="suburban">Suburban</option>
+          <option value="rural">Rural</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>Campus size</label>
+        <select name="population">
+          <option value="">No preference</option>
+          <option value="small">Small (&lt;5k)</option>
+          <option value="medium">Medium (5k–15k)</option>
+          <option value="large">Large (&gt;15k)</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>2-yr or 4-yr</label>
+        <select name="two_or_four">
+          <option value="">No preference</option>
+          <option value="2">2-year (community)</option>
+          <option value="4">4-year</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>HBCU / PWI preference</label>
+        <select name="hbcu_pref">
+          <option value="">No preference</option>
+          <option value="hbcu">HBCU</option>
+          <option value="pwi">PWI</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>State (filter, optional; 2-letter code e.g. NY)</label>
+        <input name="state" type="text" maxlength="2" />
+      </div>
+
+      <div class="row">
+        <button type="submit" id="submitBtn">Find Colleges</button>
+      </div>
+    </form>
+
+    <section id="results">
+      <!-- results inserted here -->
+    </section>
+    <footer>
+      <small>Prototype uses College Scorecard API. Field availability varies by school & year. See docs for details.</small>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+  </html>
